@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -31,7 +32,8 @@ function TeacherForm() {
         console.log("Registration successful:", data);
         localStorage.setItem("username", username);
         localStorage.setItem("role", role);
-        navigate("/" + role + "-dashboard"); 
+        navigate("/");
+        window.location.reload()
       } else {
         console.error("Registration failed:", data.error);
         setError(data.error || "Registration failed. Please try again.");
@@ -49,37 +51,38 @@ function TeacherForm() {
       setError("Please fill in all fields.");
       return;
     }
-  
+
     setError("");
     setLoading(true);
-  
+
     try {
-      console.log(`Logging in as ${role} with username: ${username}`); // Log the login attempt
+      console.log(`Logging in as ${role} with username: ${username}`);
       const response = await fetch(`http://localhost:5000/login-${role}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         console.log("Login successful:", data);
         localStorage.setItem("username", username);
         localStorage.setItem("role", role);
-        navigate("/"); 
+        navigate("/");
+        window.location.reload()
       } else {
         console.error("Login failed:", data.error);
         setError(data.error || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("An unexpected error occurred. Please try again."); // Update this for more clarity
+      setError("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-  
+
 
   return (
     <div className="space-y-4">
@@ -99,18 +102,22 @@ function TeacherForm() {
         className="w-full p-3 border rounded-md"
         aria-label="Password"
       />
-      <button
-        onClick={handleLogin}
-        className="bg-blue-500 text-white px-6 py-2 rounded-md"
-      >
-        Login
-      </button>
-      <button
-        onClick={handleRegister}
-        className="bg-green-500 text-white px-6 py-2 rounded-md"
-      >
-        Register
-      </button>
+      <div className="flex items-center gap-2">
+        <button
+          onClick={handleRegister}
+          className="bg-green-500 w-full text-white px-6 py-2 rounded-md"
+        >
+          Register
+        </button>
+        <button
+          onClick={handleLogin}
+          className="bg-blue-500 w-full text-white px-6 py-2 rounded-md"
+        >
+          Login
+        </button>
+      </div>
+
+
       {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
     </div>
   );
