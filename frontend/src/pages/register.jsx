@@ -38,7 +38,7 @@ function Register() {
   return (
     <div
       id="modal-background"
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[999] px-[20px] md:px-0"
       onClick={handleBackgroundClick}
     >
       <div className="bg-white dark:bg-[#121624] p-8 rounded-lg shadow-lg max-w-md w-full text-center relative">

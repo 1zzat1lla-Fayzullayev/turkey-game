@@ -89,7 +89,7 @@ function StudentForm() {
     <div className="space-y-4">
       <input
         type="text"
-        placeholder="O'quvchi Foydalanuvchi nomi"
+        placeholder="Foydalanuvchi nomi"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         className="w-full p-3 border rounded-md dark:bg-[#1b1e2b] dark:border-gray-700 dark:text-white"
@@ -108,13 +108,13 @@ function StudentForm() {
           onClick={handleRegister}
           className="bg-green-500 w-full text-white px-6 py-2 rounded-md"
         >
-          Register
+          Roʻyxatdan oʻtish
         </button>
         <button
           onClick={handleLogin}
           className="bg-blue-500 w-full text-white px-6 py-2 rounded-md"
         >
-          Login
+          Tizimga kirish
         </button>
       </div>
       {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
