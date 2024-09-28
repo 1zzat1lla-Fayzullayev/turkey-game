@@ -1,7 +1,13 @@
+import Header from "../components/header"
+import Wrapper from "../layout/wrapper"
 
 function Home() {
   return (
-    <div></div>
+    <div className="pt-[150px]">
+      <Wrapper>
+        <Header />
+      </Wrapper>
+    </div>
   )
 }
 

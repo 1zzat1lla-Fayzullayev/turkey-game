@@ -1,46 +1,89 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", "sans-serif";
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "sans-serif";
 }
 
 .burger {
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .burger.open div:nth-child(1) {
-  transform: rotate(45deg) translateY(10px);
+    transform: rotate(45deg) translateY(10px);
 }
 
 .burger.open div:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 
 .burger.open div:nth-child(3) {
-  transform: rotate(-45deg) translateY(-10px);
+    transform: rotate(-45deg) translateY(-10px);
 }
 
 .menu {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .menu.translate-x-0 {
-  transform: translateX(0);
+    transform: translateX(0);
 }
 
 .menu.-translate-x-full {
-  transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(14deg);
+    }
+    20% {
+        transform: rotate(-8deg);
+    }
+    30% {
+        transform: rotate(14deg);
+    }
+    40% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 2s infinite;
+}
+
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999;
 }

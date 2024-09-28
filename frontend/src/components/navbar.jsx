@@ -101,7 +101,7 @@ function Navbar({ onLogout, username }) {
               </div>
             ) : (
               <Link to={"/register"}>
-                <button className="bg-[#2ecc71] text-white px-[25px] py-[7px] rounded-[5px] font-[500]">
+                <button className="bg-[#f89d63] text-white px-[25px] py-[7px] rounded-[5px] font-[500]">
                   Kirish
                 </button>
               </Link>
