@@ -2,14 +2,34 @@
 import { useState, useEffect } from "react";
 import Wrapper from "../layout/wrapper";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function Navbar({ onLogout, username }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
 
   const handleLogout = () => {
-    onLogout();
+    Swal.fire({
+      title: "Haqiqatan ham tizimdan chiqmoqchimisiz?",
+      text: "Hisobingizga kirish uchun yana tizimga kirishingiz kerak bo'ladi.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ha, tizimdan chiqing!",
+      cancelButtonText: "Bekor qilish"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onLogout();
+        Swal.fire({
+          title: "Hisobdan chiqildi!",
+          text: "Siz tizimdan muvaffaqiyatli chiqdingiz.",
+          icon: "success"
+        });
+      }
+    });
   };
+  
 
   const changeNavbar = () => {
     if (window.scrollY >= 30 && !isMenuOpen) {
